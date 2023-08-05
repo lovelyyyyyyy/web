@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 10px;
+	font-family: 'Montserrat', sans-serif;
+	scroll-behavior: smooth;
+}
+a {
+	text-decoration: none;
+}
+.container {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+p {
+	color: black;
+	font-size: 1.4rem;
+	margin-top: 5px;
+	line-height: 2.5rem;
+	font-weight: 300;
+	letter-spacing: 0.05rem;
+}
+.section-title {
+	font-size: 4rem;
+	font-weight: 300;
+	color: black;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	text-align: center;
+}
+.section-title span {
+	color: crimson;
+}
+
+.cta {
+	display: inline-block;
+	padding: 10px 30px;
+	color: white;
+	background-color: transparent;
+	border: 2px solid crimson;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	margin-top: 30px;
+	transition: 0.3s ease;
+	transition-property: background-color, color;
+}
+.cta:hover {
+	color: white;
+	background-color: crimson;
+}
+.brand h1 {
+	font-size: 3rem;
+	text-transform: uppercase;
+	color: white;
+}
+.brand h1 span {
+	color: crimson;
+}
+
+/* Header section */
+#header {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: auto;
+}
+#header .header {
+	min-height: 8vh;
+	background-color: rgba(31, 30, 30, 0.24);
+	transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	max-width: 1300px;
+	padding: 0 10px;
+}
+#header .nav-list ul {
+	list-style: none;
+	position: absolute;
+	background-color: rgb(31, 30, 30);
+	width: 100vw;
+	height: 100vh;
+	left: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	overflow-x: hidden;
+	transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+	left: 0%;
+}
+#header .nav-list ul a {
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding: 20px;
+	display: block;
+}
+#header .nav-list ul a::after {
+	content: attr(data-after);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	color: rgba(240, 248, 255, 0.021);
+	font-size: 13rem;
+	letter-spacing: 50px;
+	z-index: -1;
+	transition: 0.3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+	transform: translate(-50%, -50%) scale(1);
+	letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+	color: crimson;
+}
+#header .hamburger {
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	border: 3px solid white;
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	cursor: pointer;
+	transform: scale(0.8);
+	margin-right: 20px;
+}
+#header .hamburger:after {
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	border: 3px solid white;
+	animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+	height: 2px;
+	width: 30px;
+	position: relative;
+	background-color: white;
+	z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	background-color: white;
+	transition: 0.3s ease;
+	transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+	top: 8px;
+}
+#header .hamburger .bar::before {
+	bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+	bottom: 0;
+}
+#header .hamburger.active .bar::after {
+	top: 0;
+}
+/* End Header section */
+
+/* Hero Section */
+#hero {
+	background-image: url(hero-bg.png);
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+}
+#hero::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.7;
+	z-index: -1;
+}
+#hero .hero {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 50px;
+	justify-content: flex-start;
+}
+#hero h1 {
+	display: block;
+	width: fit-content;
+	font-size: 4rem;
+	position: relative;
+	color: transparent;
+	animation: text_reveal 0.5s ease forwards;
+	animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+	animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+	animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+	animation: text_reveal_name 0.5s ease forwards;
+	animation-delay: 3s;
+}
+#hero h1 span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-color: crimson;
+	animation: text_reveal_box 1s ease;
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(1) span {
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(2) span {
+	animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+	animation-delay: 2.5s;
+}
+
+/* End Hero Section */
+/*company section*/
+#company .company{
+    flex-direction:column-reverse;
+    text-align:center;
+    max-width:1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+#company .col-left{
+    width:250px;
+    height:360px;
+}
+#company .col-right{
+    width:100%;
+}
+#company .col-right h2{
+    font-size :1.8rem;
+    font-weight:500;
+    letter-spacing:0.2rem;
+    margin-bottom:10px;
+}
+#company .col-right p{
+    margin-bottom:20px;
+}
+#company .col-right .cta{
+    color:black;
+    margin-bottom:50px;
+    padding:10px 20px;
+    font-size:2rem;
+}
+#company .col-left .company-img{
+    height:100%;
+    width:100%;
+    position:relative;
+    border:10px solid white;
+}
+#company .col-left .company-img::after{
+    content:'';
+    position:absolute;
+    left:-33px;
+    top:19px;
+    height:98%;
+    width:98%;
+    border:7px solid crimson;
+    z-index:-1;
+}
+/* courses*/
+#courses .courses{
+    flex-direction:column;
+    max-width:1200px;
+    margin:0 auto;
+    padding:100px 0;
+}
+#courses .courses-header h1{
+    margin-bottom:50px;
+}
+#courses .all-courses{
+    display:flex;
+    align-items:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+#courses .course-item{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    width:80%;
+    margin:20px auto;
+    overflow:hidden;
+    border-radius:10px;
+}
+#courses .course-info{
+    padding:30px;
+    flex-basis:50%;
+    height:100%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    flex-direction:column;
+    background-image:linear-gradient(60deg,#0e4448,#6d4261 100%);
+    color:white;
+}
+#courses .course-info h1{
+    font-size:4rem;
+    font-weight:500;
+    color:crimson;
+}
+#courses .course-info p{
+    color:white;
+}
+#courses .course-img{
+    flex-basis:50%;
+    height:300px;
+    overflow:hidden;
+    position:relative;
+}
+#courses .course-img:after{
+    content:'';
+    position:absolute;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.7;
+}
+#courses .course-img img{
+    transition:0.3s ease transform;
+}
+#courses .course-item:hover .course-img img{
+    transform:scale(1.1.);
+}
+/* blogs*/
+#blogs .blogs{
+    flex-direction:column;
+    text-align:center;
+    max-width:1500px;
+    margin:0 auto;
+    padding:100px 0;
+}
+#blogs .blog-top{
+    max-width:500px;
+    margin:0 auto;
+}
+#blogs .blog-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:50px;
+}
+#blogs .blog-item{
+    flex-basis:80%;
+    display:flex;
+    align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#blogs .blog-item::after{
+    content:'';
+    position:absolute;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    background-image: linear-gradient(60deg,#127387,#6d4261  100%);
+    opacity:0.9;
+    z-index:-1;
+}
+#blogs .blog-bottom .icon{
+    height:170px;
+    width:200px;
+    margin-bottom:20px;
+}
+#blogs .blog-item h2{
+    font-size:2rem;
+    color:white;
+    margin-bottom:10px;
+    text-transform:uppercase;
+}
+#blogs .blog-item p{
+    color:white;
+    text-align:left;
+}
+/* About Section */
+#about .about {
+	flex-direction: column-reverse;
+	text-align: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 20px;
+}
+#about .col-left {
+	width: 250px;
+	height: 360px;
+}
+#about .col-right {
+	width: 100%;
+}
+#about .col-right h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	margin-bottom: 10px;
+} 
+#about .col-right h2 span{
+    color:crimson;
+}
+
+#about .col-right p {
+	margin-bottom: 20px;
+}
+#about .col-right .cta {
+	color: black;
+	margin-bottom: 50px;
+	padding: 10px 20px;
+	font-size: 2rem;
+}
+#about .col-left .about-img {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	border: 10px solid white;
+}
+#about .col-left .about-img::after {
+	content: '';
+	position: absolute;
+	left: -33px;
+	top: 19px;
+	height: 98%;
+	width: 98%;
+	border: 7px solid crimson;
+	z-index: -1;
+}
+/*benifits*/
+#benifits .benifits{
+    flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#benifits .benifit-top{
+    max-width:500px;
+    margin:0 auto;
+}
+#benifits .benifit-bottom{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+#benifits .benifit-item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#benifits .benifit-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #0a2c54 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+#benifits .benifit-bottom .icon {
+	height: 150px;
+	width: 200px;
+	margin-bottom: 20px;
+}
+#benifits .benifit-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+#benifits .benifit-item p {
+	color: white;
+	text-align: left;
+}
+/* contact Section */
+#contact .contact {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 90%;
+}
+#contact .contact-items {
+	/* max-width: 400px; */
+	width: 100%;
+}
+#contact .contact-item {
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 18px 0 #1c766e2c;
+	transition: 0.3s ease box-shadow;
+}
+
+#contact .contact-item:hover {
+	box-shadow: 0px 0px 5px 0 #0000002c;
+}
+#contact .icon {
+	width: 70px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+#contact .contact-info h1 {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+#contact .contact-info h2 {
+	font-size: 1.3rem;
+	line-height: 2rem;
+	font-weight: 500;
+}
+/*End contact Section */
+
+
+
+/* Keyframes */
+@keyframes hamburger_puls {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+}
+@keyframes text_reveal_box {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes text_reveal {
+	100% {
+		color: white;
+	}
+}
+@keyframes text_reveal_name {
+	100% {
+		color: crimson;
+		font-weight: 500;
+	}
+}
+/* End Keyframes */
+
+/* Media Query For Tablet */
+@media only screen and (min-width: 768px) {
+	.cta {
+		font-size: 2.5rem;
+		padding: 20px 60px;
+	}
+	h1.section-title {
+		font-size: 6rem;
+	}
+
+	/* Hero */
+	#hero h1 {
+		font-size: 7rem;
+	}
+	/* End Hero */
+    /* Compant*/
+#company .company{
+    flex-direction:row;
+}
+#company .col-left{
+    width:600px;
+    height:400px;
+    padding-left:60px;
+}
+
+#company .company .col-left .company-img::after{
+    left:-45px;
+    top:34px;
+    height:98%;
+    width:98%;
+    border:10px solid crimson;
+}
+#company .col-right {
+    text-align:left;
+    padding:30px;
+}
+#company .col-right h1{
+    text-align:left;
+}
+
+
+	
+	/* End Services Section */
+
+	/* courses*/
+	#courses .course-item {
+		flex-direction: row;
+	}
+	#courses .course-item:nth-child(even) {
+		flex-direction: row-reverse;
+	}
+	#courses .course-item {
+		height: 400px;
+		margin: 0;
+		width: 100%;
+		border-radius: 0;
+	}
+	#courses .all-courses .course-info {
+		height: 100%;
+	}
+	#courses .all-courses .course-img {
+		height: 100%;
+	}
+	/* End Project */
+    /*  blog Section */
+	#blogs .blog-bottom .blog-item {
+		flex-basis: 45%;
+		margin: 2.5%;
+	}
+    /* Services Section */
+	#benifits .benifit-bottom .service-item {
+		flex-basis: 45%;
+		margin: 2.5%;
+	}
+
+	/* About */
+	#about .about {
+		flex-direction: row;
+	}
+	#about .col-left {
+		width: 600px;
+		height: 400px;
+		padding-left: 60px;
+	}
+	#about .about .col-left .about-img::after {
+		left: -45px;
+		top: 34px;
+		height: 98%;
+		width: 98%;
+		border: 10px solid crimson;
+	}
+	#about .col-right {
+		text-align: left;
+		padding: 30px;
+	}
+	#about .col-right h1 {
+		text-align: left;
+	}
+	/* End About */
+
+	/* contact  */
+	#contact .contact {
+		flex-direction: column;
+		padding: 100px 0;
+		align-items: center;
+		justify-content: center;
+		min-width: 20vh;
+	}
+	#contact .contact-items {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		margin: 0;
+	}
+	#contact .contact-item {
+		width: 30%;
+		margin: 0;
+		flex-direction: row;
+	}
+	#contact .contact-item .icon {
+		height: 100px;
+		width: 100px;
+	}
+	#contact .contact-item .icon img {
+		object-fit: contain;
+	}
+	#contact .contact-item .contact-info {
+		width: 100%;
+		text-align: left;
+		padding-left: 20px;
+	}
+	/* End contact  */
+}
+/* End Media Query For Tablet */
+
+/* Media Query For Desktop */
+@media only screen and (min-width: 1200px) {
+	/* header */
+	#header .hamburger {
+		display: none;
+	}
+	#header .nav-list ul {
+		position: initial;
+		display: block;
+		height: auto;
+		width: fit-content;
+		background-color: transparent;
+	}
+	#header .nav-list ul li {
+		display: inline-block;
+	}
+	#header .nav-list ul li a {
+		font-size: 1.8rem;
+	}
+	#header .nav-list ul a:after {
+		display: none;
+	}
+	/* End header */
+
+	#blogs .blog-bottom .blog-item {
+		flex-basis: 22%;
+		margin: 1.5%;
+	}
+    #benifits .benifit-bottom .benifit-item {
+		flex-basis: 22%;
+		margin: 1.5%;
+	}
+}
+/* End  Media Query For Desktop */
+
+    </style>
+</head>
+<body>
+     <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <img src="TF.png" class="logo">
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="courses" data-after="courses">courses</a></li>
+            <li><a href="#blogs" data-after="blogs">blogs</a></li>
+            <li><a href="#about " data-after="About us">About us</a></li>
+            <li><a href="#contact" data-after="contact">student corner</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+   <!-- End Header -->
+
+  
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>A Training That <span></span></h1>
+        <h1>Superchanges You <span></span></h1>
+        <h1>For A Better Future<span></span></h1>
+        <a href="#projects" type="button" class="cta">get Started</a>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero Section  -->
+  <!--company-->
+  <section id="company">
+    <div class="company container">
+        <div class="col-left">
+          <div class="about-img">
+            <img src="first.png" alt="img">
+            
+          </div>
+        </div>
+        
+        <div class="col-right">
+          <h1 class="section-title">How we are helping<span> Students?</span></h1>
+          
+          <p>Your skills are your assets. They help you grow in your career. They take you a step closer to your dreams. With an education and a skillset same as your peers, how can you stand out? The industry wants talent that helps them serve their customers better. Oftentimes, organizations hire you and then invest time and money in training you.
+            However, if they can acquire talent like you who is ready to be deployed onto projects, they can gladly pay you a higher salary. The future of work demands pace and proficiency. We are here to help you deliver them.
+            You have the skills and the resources to learn more. But to ensure you build a pedestal to grow your life upon, we will guide you to the success you seek. Our experts are also passionate about mentoring the youth and enabling a brighter future for them.</p>
+          <a href="#" class="cta">Learn More</a>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- courses Section -->
+  <section id="courses">
+    <div class="courses container">
+      <div class="courses-header">
+        <h1 class="section-title">Cou<span>r</span>ses</h1>
+      </div>
+      <div class="all-courses">
+        <div class="course-item">
+          <div class="course-info">
+            <h1>Course 1</h1>
+            <h2>AZURE</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="course-img">
+            <img src="courses_1.png" alt="img">
+          </div>
+        </div>
+        <div class="course-item">
+          <div class="course-info">
+            <h1>course 2</h1>
+            <h2>M365</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="course-img">
+            <img src="courses_2.png" alt="img">
+          </div>
+        </div>
+        <div class="course-item">
+          <div class="course-info">
+            <h1>Course 3</h1>
+            <h2>SECURITY COURSES</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="course-img">
+            <img src="courses_3.png" alt="img">
+          </div>
+        </div>
+       
+        
+		
+      </div>
+    </div>
+  </section>
+  <!-- End Projects Section -->
+<!-- Service Section -->
+<section id="blogs">
+    <div class="blogs container">
+      <div class="blogs-top">
+        <h1 class="section-title">Bl<span>o</span>gs</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum deleniti maiores pariatur assumenda quas
+          magni et, doloribus quod voluptate quasi molestiae magnam officiis dolorum, dolor provident atque molestias
+          voluptatum explicabo!</p>
+      </div>
+      <div class="blog-bottom">
+        <div class="blog-item">
+          <div class="icon"><img src="blog_1.png" /></div>
+          <h2>Blog 1</h2>
+          <p>Lorem ipsum dolor sit amet c</p>
+          <a href="#" class="cta">Learn More</a>
+
+        </div>
+        <div class="blog-item">
+          <div class="icon"><img src="blog_2.png" /></div>
+          <h2>Blog 2</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <a href="#" class="cta">Learn More</a>
+        </div>
+        <div class="blog-item">
+          <div class="icon"><img src="blog_3.png" /></div>
+          <h2>Blog 3</h2>
+          <p>Lorem ipsum dolor sit amet consectetur </p>
+          <a href="#" class="cta">Learn More</a>
+        
+      </div>
+    </div>
+
+    <section id="about">
+        <div class="about container">
+          <div class="col-left">
+            <div class="about-img">
+              <img src="a.png" alt="img">
+              
+            </div>
+          </div>
+          
+          <div class="col-right">
+            <h1 class="section-title">About <span>Us</span></h1>
+            
+            <p>TrainFresher was established to enable students and freshers to take charge of their careers. It aims to train young talent, make them industry-ready, and help them kick start their career with a decent job. The organization focuses on building essential technical skills, provides exposure by letting students work on real projects, and offers industrial experience. Incepted by Pradep Raney, a tech guru who has trained, consulted, and built technological infrastructures for organizations across the world, TrainFresher is now helping freshers build the infrastructure for their dreams.
+                The corporate world is now focusing vehemently on the Future of Work. With TrainFresher, we ensure you are riding the wave at the lead and are adapting seamlessly to the change. The courses you undergo with us will certify you with official Microsoft and/or Azure credentials. They will equip you with the technology that the industry demands right now and for the future.
+                Furthermore, TrainFresher goes a step beyond training and also mentors you through your tech career. We understand what drives your decisions, what motivates you to get out of bed each morning, and what could be the best avenue for your success. If you are ready to build a pedestal for your dreams and take the first step to soar high, get in touch with us and explore the immense possibilities that await you.</p>
+    
+    
+            <a href="#" class="cta">Learn More</a>
+          </div>
+        </div>
+        
+        </section>
+  <!-- About Section -->
+  <section id="about">
+    <div class="about container">
+      <div class="col-left">
+        <div class="about-img">
+          <img src="founder.jpg" alt="img"> 
+		  
+        </div>
+      </div>
+	  
+      <div class="col-right">
+        <h1 class="section-title">Meet Our <span>Team</span></h1>
+        <h2><span>Pradep Raney</span></h2>
+        <h2>Founder & CEO Analyst</h2>
+        <p>A Seasoned IT professional with over 22 years of experience in various areas of IT Infrastructure which include Pre-Sales, Consulting, Training, Designing, Planning & Deployment. A varied experience on working at various levels on technologies like Microsoft – Azure, Office 365, Skype for Business, Active Directory, Exchange, Lync, SCCM, SCOM, MIM, Private Cloud etc. VMware – vSphere, vCenter, View, v Director and Cloud Computing on AWS, Microsoft Azure and Open stack.</p>
+
+        <a href="#" class="cta">Download Resume</a>
+      </div>
+    </div>
+	
+	</section>
+
+
+  </section>
+  <!-- End About Section -->
+  <!-- About Section -->
+  <section id="about">
+    <div class="about container">
+      <div class="col-left">
+        <div class="about-img">
+          <img src="Team-Member_2.jpg" alt="img">
+		  
+        </div>
+      </div>
+	  
+      <div class="col-right">
+       
+        <h2> <span>Shruti Raney</span></h2>
+        <h2>Director India Staffing & Projects</h2>
+
+
+        <p>Shruti has over 13 years of experience in Human Resources. She specialises in Direct Hiring, Contract Staffing and Key Account Management. She has completed her Bachelors from Mumbai University. Shruti is well known for her customer centric approach, her eye for details and her capability to think out of the box to build solutions. In her current role she Heads the Direct Hiring business and Projects for India.</p>
+
+        <a href="#" class="cta">Download Resume</a>
+      </div>
+    </div>
+	
+	</section>
+
+
+  </section>
+ <!-- End About Section -->
+ <section id="contact">
+    <div class="contact container">
+      <div>
+        <h1 class="section-title">This Course <span>includes</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="y.png" /></div>
+          <div class="contact-info">
+            <h2>Live session & access to recorded session</h2>
+            
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="q.png" /></div>
+          <div class="contact-info">
+            <h2>Interview questions</h2>
+            
+           
+          </div>
+        </div>
+		
+        <div class="contact-item">
+          <div class="icon"><img src="i.png" /></div>
+          <div class="contact-info">
+            <h2>A certificate of completion</h2>
+            
+          </div>
+        </div>
+
+		
+
+      </div>
+    </div>
+  </section>
+ <!-- benifits Section -->
+ <section id="benifits">
+	<div class="benifits container">
+	  <div class="benifits-title">
+		<div>
+			<h1 class="section-title">What will you <span>get</span></h1>
+		  
+	  <div class="benifit-bottom">
+		<div class="benifit-item">
+		  <div class="icon"><img src="interview.jpg" /></div>
+		  <h2>Mock Interview Questions </h2>
+		  
+		</div>
+		<div class="benifit-item">
+		  <div class="icon"><img src="real_time.jpg" /></div>
+		  <h2>Work On Real Time Projects</h2>
+		  
+		</div>
+		<div class="benifit-item">
+		  <div class="icon"><img src="job.jpg" /></div>
+		  <h2>100% Job Assistance</h2>
+		  
+		</div>
+		<div class="benifit-item">
+		  <div class="icon"><img src="cert.jpg" /></div>
+		  <h2>One Year Working  Certificate</h2>
+		  
+		</div>
+	  </div>
+	</div>
+  </section>
+
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact container">
+      <div>
+        <h1 class="section-title">Contact <span>info</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+91 9960 720442</h2>
+           
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h2>info@trainfresher.com</h2>
+            
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>Trainfresher , NIBM Road , Pune, 411048</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+  
+</body>
+</html>
